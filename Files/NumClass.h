@@ -9,7 +9,7 @@
     * For Example:
     * 407 = 43 + 03 + 73 = 64 + 0 + 343 = 407
     */
-    int isArmStrong(int)
+    int isArmstrong(int)
 
     /* will return if a number is a palindrome */
     int isPalindrome(int)

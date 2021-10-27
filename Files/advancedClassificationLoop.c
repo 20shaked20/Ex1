@@ -2,12 +2,12 @@
 // Created by Shaked Levi on 26/10/2021.
 //
 #include <stdio.h>
-#include "NumClass.h";
+#include "NumClass.h"
 
-enum{true = 1,false = 0};
+enum bool{true = 1,false = 0};
 
 
-isPalindrome(int num){ //remains the same when its digits reversed >> creating a new number.
+int isPalindrome(int num){ //remains the same when its digits reversed >> creating a new number.
 
     if(num>-9 && num<9){ //one-digit number therefore is a palindrome.
         return true;
@@ -18,7 +18,7 @@ isPalindrome(int num){ //remains the same when its digits reversed >> creating a
 
     while(tmp>0){
         remainder = tmp%10;
-        isPal = (isPal*10)+r;
+        isPal = (isPal*10)+remainder;
         tmp = tmp/10;
     }
 
@@ -40,14 +40,14 @@ int digitsSize(int num){
 /// private method to calculate the power of num^index.
 int power(int index, int num){
     int sum = 0;
-    for(int i = 0, i<index; i++){
+    for(int i = 0; i<index; i++){
         sum = sum*num;
     }
     return sum;
 }
 
 
-isArmstrong(int num){
+int isArmstrong(int num){
 
     int digits = digitsSize(num);
     int tmp, isArmS, remainder;

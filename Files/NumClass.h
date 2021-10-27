@@ -9,18 +9,18 @@
     * For Example:
     * 407 = 43 + 03 + 73 = 64 + 0 + 343 = 407
     */
-    int isArmstrong(int)
+    int isArmstrong(int num);
 
     /* will return if a number is a palindrome */
-    int isPalindrome(int)
+    int isPalindrome(int num);
 
     /* will return if a number is prime */
-    int isPrime(int)
+    int isPrime(int num);
 
     /* Strong number is a special number whose sum of the factorial of digits is equal to the original number.
      * For Example:
      * 1! + 4! + 5! = 145
      */
-     int isStrong(int)
+     int isStrong(int num);
 
 #endif //EX1_NUMCLASS_H

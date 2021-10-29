@@ -3,8 +3,8 @@
 //
 #include <stdio.h>
 #include "NumClass.h"
-
-enum bool{true = 1,false = 0};
+#define true 1
+#define false 0
 
 /// private helper method - reverse in recursion:
 int reverse(int num,int tmp){
@@ -23,6 +23,7 @@ int isPalindrome(int num){
     }
     return false;
 }
+
 
 ///private helper method.
 

@@ -3,8 +3,8 @@
 //
 #include <stdio.h>
 #include "NumClass.h"
-
-enum bool{true = 1,false = 0};
+#define true 1
+#define false 0
 
 
 int isPalindrome(int num){ //remains the same when its digits reversed >> creating a new number.
@@ -13,12 +13,12 @@ int isPalindrome(int num){ //remains the same when its digits reversed >> creati
         return true;
     }
 
-    int isPal, remainder;
+    int isPal = 0, remainder;
     int tmp = num; //temporary number for checking
 
     while(tmp>0){
-        remainder = tmp%10;
-        isPal = (isPal*10)+remainder;
+        remainder = tmp%10; 
+        isPal = (isPal*10)+remainder; 
         tmp = tmp/10;
     }
 
@@ -31,7 +31,7 @@ int isPalindrome(int num){ //remains the same when its digits reversed >> creati
 /// private method to calculate how many digits the number has.
 int digitsSize(int num){
     int size = 0;
-    while(num!=0){
+    while(num>0){
         num=num/10;
         size++;
     }
@@ -39,7 +39,7 @@ int digitsSize(int num){
 }
 /// private method to calculate the power of num^index.
 int power(int index, int num){
-    int sum = 0;
+    int sum = 1;
     for(int i = 0; i<index; i++){
         sum = sum*num;
     }
@@ -50,7 +50,9 @@ int power(int index, int num){
 int isArmstrong(int num){
 
     int digits = digitsSize(num);
-    int tmp, isArmS, remainder;
+    int tmp = num;
+    int isArmS = 0;
+    int remainder;
 
     for(int i = 0; i<digits; i++){
         remainder = tmp%10;

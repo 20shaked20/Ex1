@@ -1,14 +1,16 @@
 CC=gcc
+AR=ar
 OBJECTS_Program= basicClassification.o advancedClassificationLoop.o #advancedClassificationRecursion.o
 OBJECTS_LIB= basicClassification.o advancedClassificationLoop.o
 FLAGS= -Wall -g
 
-all: basicClassification.o advancedClassificationLoop.o libNumClass.a progmain
-progmain: $(OBJECTS_Program) NumClass.a
-	$(CC) $(FLAGS) -o progmain $(OBJECTS_Program) NumClass.a
+all: basicClassification.o advancedClassificationLoop.o libNumClass.a Test
 
 libNumClass.a: $(OBJECTS_LIB)
-	$(AR) -rcs NumClass.a $(OBJECTS_LIB)
+	$(AR) -rcs libNumClass.a $(OBJECTS_LIB)
+
+Test: Test.c 
+	$(CC) $(FLAGS) Test.c -L. -l:libNumClass.a -o Test
 
 basicClassification.o: basicClassification.c NumClass.h
 	$(CC) $(FLAGS) -c basicClassification.c
@@ -22,4 +24,4 @@ advancedClassificationLoop.o: advancedClassificationLoop.c NumClass.h
 .PHONY: clean all
 
 clean:
-	rm -f *.o *.a *.so progmain
+	rm -f *.o *.a *.so progmain Test

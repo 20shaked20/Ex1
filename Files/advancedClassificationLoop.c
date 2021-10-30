@@ -47,15 +47,15 @@ int power(int index, int num){
 }
 
 
-int isArmstrong(int num){
+int isArmstrong(int num){ 
 
-    int digits = digitsSize(num);
-    int tmp = num;
-    int isArmS = 0;
-    int remainder;
+    int digits = digitsSize(num); 
+    int tmp = num; 
+    int isArmS = 0; 
+    int remainder; 
 
-    for(int i = 0; i<digits; i++){
-        remainder = tmp%10;
+    for(int i = 0; i<digits; i++){ 
+        remainder = tmp%10; 
         isArmS += power(digits, remainder);
         tmp = tmp/10;
     }

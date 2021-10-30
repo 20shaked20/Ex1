@@ -31,7 +31,7 @@ int main(void){
     return 0;
 */
     //Advacned Classifciation tests:
-/*
+
     //isPalindrome:
     int num3;
     printf("Enter a number to check if 'isPalindrome' ");
@@ -57,11 +57,12 @@ int main(void){
     }
 
     return 0;
-    */
+    
 
     //Advanced Classification Recursion tests:
 
     //isPalindrome:
+    /*
     int num5;
     printf("Recursive Method: ");
     printf("Enter a number to check if 'isPalindrome' ");
@@ -73,4 +74,5 @@ int main(void){
     else{
         printf("is not Palindrome: %d \n",num5);
     }
+    */
 }

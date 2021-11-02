@@ -37,8 +37,8 @@ int isStrong(int num) {
     int sum = 0; // the checking number
     while (tmp > 0) {
         int last_digit = tmp%10;
-        sum = sum + factorial(last_digit); // 145, 5,4,1
-        tmp = tmp / 10; //145 > 14 > 1 > 0
+        sum = sum + factorial(last_digit);
+        tmp = tmp / 10; 
     }
    
     if (num == sum) {

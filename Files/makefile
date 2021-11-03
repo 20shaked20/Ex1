@@ -8,7 +8,7 @@ OBJECTS = main.o basicClassification.o advancedClassificationRecursion.o advance
 FLAGS= -Wall -g
 
 #Make commands as a bunch:
-all: loops recursives recursived loopd mains maindloop maindrec 
+all: libclassloops.a libclassloops.so libclassrec.a libclassrec.so mains maindloop maindrec 
 
 
 loops: libclassloops.a #makes static library for loops and normal

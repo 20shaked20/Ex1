@@ -27,10 +27,10 @@ maindrec: $(OBJECTS_Main)
 #Make commands as singles:
 
 libclassloops.a: $(OBJECTS_loop)  #static library for loops and normal
-	$(AR) $(FLAGS) -rcs libclassloops.a $(OBJECTS_loop)
+	$(AR) -rcs libclassloops.a $(OBJECTS_loop)
 
 libclassrec.a: $(OBJECTS_Rec) #static library for rec and normal
-	$(AR) $(FLAGS) -rcs libclassrec.a $(OBJECTS_Rec)
+	$(AR) -rcs libclassrec.a $(OBJECTS_Rec)
 
 libclassrec.so: $(OBJECTS_Rec) #dynamic library for rec and normal
 	$(CC) $(FLAGS) -shared -o libclassrec.so $(OBJECTS_Rec)

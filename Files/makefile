@@ -7,7 +7,7 @@ OBJECTS_Main = main.o
 FLAGS= -Wall -g
 
 #Make commands as a bunch:
-all: libclassloops.a libclassrec.so libclassloops.so mains maindloop maindrec 
+all: loops recursives recursived loopd mains maindloop maindrec
 
 
 loops: libclassloops.a #makes static library for loops and normal

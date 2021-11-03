@@ -4,11 +4,11 @@ AR=ar
 OBJECTS_loop= basicClassification.o advancedClassificationLoop.o
 OBJECTS_Rec = basicClassification.o advancedClassificationRecursion.o
 OBJECTS_Main = main.o
-OBJECTS = main.o basicClassification.o advancedClassificationRecursion.o advancedClassificationLoop.o
+OBJECTS = basicClassification.o advancedClassificationRecursion.o advancedClassificationLoop.o main.o
 FLAGS= -Wall -g
 
 #Make commands as a bunch:
-all: libclassloops.a libclassloops.so libclassrec.a libclassrec.so mains maindloop maindrec 
+all: $(OBJECTS) libclassloops.a libclassloops.so libclassrec.a libclassrec.so mains maindloop maindrec 
 
 
 loops: libclassloops.a #makes static library for loops and normal
@@ -17,12 +17,12 @@ recursived: libclassrec.so #makes dynamic library for rec and normal
 loopd: libclassloops.so #makes dynamic library for loops and normal
 
 mains: $(OBJECTS_Main) libclassrec.a
-	$(CC) $(FLAGS) -o mains $(OBJECTS_Main) libclassrec.a
+	$(CC) $(FLAGS) -o mains $(OBJECTS_Main) libclassrec.a 
 
-maindloop: $(OBJECTS_Main) libclassloops.so
+maindloop: $(OBJECTS_Main) 
 	$(CC) $(FLAGS) -o maindloop $(OBJECTS_Main) ./libclassloops.so
 
-maindrec: $(OBJECTS_Main) libclassrec.so
+maindrec: $(OBJECTS_Main) 
 	$(CC) $(FLAGS) -o maindrec $(OBJECTS_Main) ./libclassrec.so
 
 #Make commands as singles:

@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include "NumClass.h"
 
-int main(int num1,int num2){
-   /*
+int main(){
+   
     int num1;
     int num2;
-    printf("Enter first positive number: ");
-    */
+   //printf("Enter first positive number: ");
     scanf("%d",&num1);
    // printf("Enter a second positive number: ");
     scanf("%d",&num2);

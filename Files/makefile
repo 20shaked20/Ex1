@@ -4,11 +4,10 @@ AR=ar
 OBJECTS_loop= basicClassification.o advancedClassificationLoop.o
 OBJECTS_Rec = basicClassification.o advancedClassificationRecursion.o
 OBJECTS_Main = main.o
-OBJECTS = basicClassification.o advancedClassificationRecursion.o advancedClassificationLoop.o main.o
 FLAGS= -Wall -g
 
 #Make commands as a bunch:
-all: loops recursived loopd mains maindloop maindrec 
+all: libclassloops.a libclassrec.so libclassloops.so mains maindloop maindrec 
 
 
 loops: libclassloops.a #makes static library for loops and normal

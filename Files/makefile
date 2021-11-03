@@ -1,46 +1,56 @@
-.PHONY: clean all
+#VARIABLES:
+CC=gcc
+AR=ar
+OBJECTS_loop= basicClassification.o advancedClassificationLoop.o
+OBJECTS_Rec = basicClassification.o advancedClassificationRecursion.o
+OBJECTS_Main = main.o
+FLAGS= -Wall -g
 
+#Make commands as a bunch:
 all: loops recursives recursived loopd mains maindloop maindrec
 
 
-loops: libclassloops.a
-recursives: libclassrec.a
-recursived: libclassrec.so
-loopd: libclassloops.so
+loops: libclassloops.a #makes static library for loops and normal
+recursives: libclassrec.a #makes static library for rec and normal
+recursived: libclassrec.so #makes dynamic library for rec and normal
+loopd: libclassloops.so #makes dynamic library for loops and normal
 
-mains: main.o libclassrec.a
-	gcc -Wall -g -o mains main.o libclassrec.a -lm
+mains: $(OBJECTS_Main) libclassrec.a
+	$(CC) $(FLAGS) -o mains $(OBJECTS_Main) libclassrec.a 
 
-maindloop: main.o libclassloops.so
-	gcc -Wall -g -o maindloop main.o ./libclassloops.so -lm
+maindloop: $(OBJECTS_Main) 
+	$(CC) $(FLAGS) -o maindloop $(OBJECTS_Main) ./libclassloops.so
 
-maindrec: main.o libclassrec.so
-	gcc -Wall -g -o maindrec main.o ./libclassrec.so -lm
+maindrec: $(OBJECTS_Main) 
+	$(CC) $(FLAGS) -o maindrec $(OBJECTS_Main) ./libclassrec.so
 
+#Make commands as singles:
 
-libclassloops.a: basicClassification.o advancedClassificationLoop.o
-	ar -rcs libclassloops.a basicClassification.o advancedClassificationLoop.o
+libclassloops.a: $(OBJECTS_loop)  #static library for loops and normal
+	$(AR) -rcs libclassloops.a $(OBJECTS_loop)
 
-libclassrec.a: basicClassification.o advancedClassificationRecursion.o
-	ar -rcs libclassrec.a basicClassification.o advancedClassificationRecursion.o
+libclassrec.a: $(OBJECTS_Rec) #static library for rec and normal
+	$(AR) -rcs libclassrec.a $(OBJECTS_Rec)
 
-libclassrec.so: basicClassification.o advancedClassificationRecursion.o
-	gcc -shared -o libclassrec.so basicClassification.o advancedClassificationRecursion.o
+libclassrec.so: $(OBJECTS_Rec) #dynamic library for rec and normal
+	$(CC) $(FLAGS) -shared -o libclassrec.so $(OBJECTS_Rec)
 
-libclassloops.so: basicClassification.o advancedClassificationLoop.o
-	gcc -shared -o libclassloops.so basicClassification.o advancedClassificationLoop.o
+libclassloops.so: $(OBJECTS_loop)  #dynamic library for loops and normal
+	$(CC) $(FLAGS) -shared -o libclassloops.so $(OBJECTS_loop)
 
-basicClassification.o: basicClassification.c NumClass.h
-	gcc -Wall -g -c basicClassification.c
+basicClassification.o: basicClassification.c NumClass.h 
+	$(CC) $(FLAGS) -c basicClassification.c
 
 advancedClassificationLoop.o: advancedClassificationLoop.c NumClass.h
-	gcc -Wall -g -c advancedClassificationLoop.c -lm
+	$(CC) $(FLAGS) -c advancedClassificationLoop.c
 
 advancedClassificationRecursion.o: advancedClassificationRecursion.c NumClass.h
-	gcc -Wall -g -c advancedClassificationRecursion.c -lm
+	$(CC) $(FLAGS) -c advancedClassificationRecursion.c
 
-main.o: main.c NumClass.h
-	gcc -Wall -g -c main.c
+main.o: main.c NumClass.h 
+	$(CC) $(FLAGS) -c main.c
 
-clean:
+.PHONY: clean all
+
+clean: #maybe add more to clean?
 	rm -f *.o *.a *.so mains maindloop maindrec
